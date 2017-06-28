@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ChatMessagesProvider: class {
+@objc protocol LocalisysChatMessagesProvider: class {
   //
 }
 
@@ -16,7 +16,7 @@ final class ChatMessagesView: UICollectionView {
 
   // MARK: - Core properties
 
-  weak var messagesProvider: ChatMessagesProvider? {
+  @objc public weak var messagesProvider: LocalisysChatMessagesProvider? {
     didSet { reloadData() }
   }
 
@@ -36,6 +36,13 @@ final class ChatMessagesView: UICollectionView {
 
   fileprivate func setupInitialState() {
     backgroundColor = .clear
+  }
+
+  override func reloadData() {
+    guard messagesProvider != nil else {
+      fatalError("\(String(describing: self)) must have \(#keyPath(messagesProvider)) properly set up before displaying messages!")
+    }
+    super.reloadData()
   }
 }
 

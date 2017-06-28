@@ -38,6 +38,11 @@ final class LocalisysChatView: UIView {
   // MARK: - Public properties
 
   public weak var delegate: LocalisysChatViewDelegate?
+  public weak var messagesProvider: LocalisysChatMessagesProvider? {
+    get { return messagesCollectionView.messagesProvider }
+    set { messagesCollectionView.messagesProvider = newValue }
+  }
+
 //  public weak var dataSourcce:
 
   @IBInspectable var chatColor: UIColor = UIColor(red: 194.0 / 255.0, green: 224.0 / 255.0, blue: 1.0, alpha: 1.0) {
