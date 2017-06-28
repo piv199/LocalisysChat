@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Eqc-S1-sdI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Launch Controller-->
+        <scene sceneID="79l-Cd-GbQ">
+            <objects>
+                <viewController id="Eqc-S1-sdI" customClass="LaunchController" customModule="LocalisysChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PbC-K7-kk8"/>
+                        <viewControllerLayoutGuide type="bottom" id="EM0-MX-LZz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I78-GF-1Sq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="Nfc-GE-A3O" kind="custom" identifier="Auth" customClass="InitialApplicationSegue" customModule="LocalisysChat" customModuleProvider="target" id="Xfb-lO-52T"/>
+                        <segue destination="UEB-iK-hnA" kind="custom" identifier="Main" customClass="InitialApplicationSegue" customModule="LocalisysChat" customModuleProvider="target" id="vIJ-pt-pam"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf2-xo-Spy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-54" y="70"/>
+        </scene>
+        <!--Auth-->
+        <scene sceneID="cVR-G8-yTb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Auth" id="Nfc-GE-A3O" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ms8-or-PE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551" y="-9"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="Q9X-Z6-dWh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="UEB-iK-hnA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X7h-OJ-pID" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="550" y="130"/>
+        </scene>
+    </scenes>
+</document>

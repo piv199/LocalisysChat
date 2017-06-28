@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HY7-Na-w3b">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="G6J-gc-pre">
+            <objects>
+                <viewController title="Main" id="HY7-Na-w3b" customClass="MainViewController" customModule="LocalisysChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ujg-Zv-60r"/>
+                        <viewControllerLayoutGuide type="bottom" id="H5L-0D-qFv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p7X-Kl-qhb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqi-uW-Czy" customClass="LocalisysChatView" customModule="LocalisysChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="176" width="375" height="431"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="431" id="Sbd-6H-gL6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yqi-uW-Czy" secondAttribute="trailing" id="GT0-51-bIy"/>
+                            <constraint firstItem="yqi-uW-Czy" firstAttribute="leading" secondItem="p7X-Kl-qhb" secondAttribute="leading" id="TbG-4p-aKr"/>
+                            <constraint firstItem="H5L-0D-qFv" firstAttribute="top" secondItem="yqi-uW-Czy" secondAttribute="bottom" constant="60" id="cnm-oj-Gva"/>
+                            <constraint firstItem="yqi-uW-Czy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ujg-Zv-60r" secondAttribute="bottom" id="rWP-2Z-w2w"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="IQLayoutGuideConstraint" destination="cnm-oj-Gva" id="6D3-UJ-kcE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEJ-eg-dJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4" y="65.217391304347828"/>
+        </scene>
+    </scenes>
+</document>
