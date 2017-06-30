@@ -8,4 +8,6 @@
 
 import UIKit
 
-class MessageView: UICollectionViewCell {}
+class MessageView: UICollectionViewCell {
+  func fill(_ model: LocalisysChatMessageModel) { fatalError("abstract function must be overwritten in subclass") }
+}

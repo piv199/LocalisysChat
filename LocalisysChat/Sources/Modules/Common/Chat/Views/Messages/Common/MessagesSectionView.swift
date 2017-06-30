@@ -8,4 +8,6 @@
 
 import UIKit
 
-public class MessagesSectionView: UICollectionReusableView { }
+public class MessagesSectionView: UICollectionReusableView {
+  public func fill(_ model: LocalisysChatSectionHeaderModel) { fatalError("abstract function must be overwritten in subclass") }
+}

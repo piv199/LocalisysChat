@@ -11,6 +11,8 @@
 		FA1564471F03A21500DE87F6 /* ChatSendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1564461F03A21500DE87F6 /* ChatSendButton.swift */; };
 		FA1564491F03A37E00DE87F6 /* ChatTextInputArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1564481F03A37E00DE87F6 /* ChatTextInputArea.swift */; };
 		FA3152441F01C85F00996209 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3152431F01C85F00996209 /* Images.xcassets */; };
+		FA4D66E01F066B0B005F1739 /* LocalisysChatMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D66DF1F066B0B005F1739 /* LocalisysChatMessageModel.swift */; };
+		FA4D66E21F066B21005F1739 /* LocalisysChatMessagesSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D66E11F066B21005F1739 /* LocalisysChatMessagesSectionModel.swift */; };
 		FA63D3CB1F022FC4004B1B5C /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63D3CA1F022FC4004B1B5C /* AutoTextView.swift */; };
 		FA8ACCC61F01877F00AAF696 /* ChatToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ACCC51F01877F00AAF696 /* ChatToolbarView.swift */; };
 		FA8ACCC81F01896700AAF696 /* MessagesSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ACCC71F01896700AAF696 /* MessagesSectionView.swift */; };
@@ -41,6 +43,8 @@
 		FA1564461F03A21500DE87F6 /* ChatSendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSendButton.swift; sourceTree = "<group>"; };
 		FA1564481F03A37E00DE87F6 /* ChatTextInputArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextInputArea.swift; sourceTree = "<group>"; };
 		FA3152431F01C85F00996209 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FA4D66DF1F066B0B005F1739 /* LocalisysChatMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatMessageModel.swift; sourceTree = "<group>"; };
+		FA4D66E11F066B21005F1739 /* LocalisysChatMessagesSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatMessagesSectionModel.swift; sourceTree = "<group>"; };
 		FA63D3CA1F022FC4004B1B5C /* AutoTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
 		FA8ACCC51F01877F00AAF696 /* ChatToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatToolbarView.swift; sourceTree = "<group>"; };
 		FA8ACCC71F01896700AAF696 /* MessagesSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesSectionView.swift; sourceTree = "<group>"; };
@@ -111,6 +115,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FA4D66DE1F066AEE005F1739 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA4D66E31F066F48005F1739 /* Common */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA4D66E31F066F48005F1739 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FA4D66DF1F066B0B005F1739 /* LocalisysChatMessageModel.swift */,
+				FA4D66E11F066B21005F1739 /* LocalisysChatMessagesSectionModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		FA8ACCC91F01896D00AAF696 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +174,7 @@
 			children = (
 				FA3152421F01C83500996209 /* Resources */,
 				FAFBAE141F04224300040864 /* Views */,
+				FA4D66DE1F066AEE005F1739 /* Model */,
 				FA31523F1F01B32500996209 /* Extra */,
 				FAFBAE111F04220500040864 /* LocalisysChatViewDelegate.swift */,
 				FAA88DB81F01839000B9C166 /* LocalisysChatView.swift */,
@@ -462,9 +484,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4D66E21F066B21005F1739 /* LocalisysChatMessagesSectionModel.swift in Sources */,
 				FAFBAE121F04220500040864 /* LocalisysChatViewDelegate.swift in Sources */,
 				FAFBAE1C1F04366C00040864 /* ChatArrayExtensions.swift in Sources */,
 				FAA88DA71F01745F00B9C166 /* SignInViewController.swift in Sources */,
+				FA4D66E01F066B0B005F1739 /* LocalisysChatMessageModel.swift in Sources */,
 				FAA88DAA1F01782D00B9C166 /* LaunchController.swift in Sources */,
 				FAA88DB91F01839000B9C166 /* LocalisysChatView.swift in Sources */,
 				FAFBAE1A1F04230300040864 /* ChatMessagesView.swift in Sources */,

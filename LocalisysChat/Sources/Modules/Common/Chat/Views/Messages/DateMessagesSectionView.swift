@@ -35,6 +35,12 @@ public final class DateMessagesSectionView: MessagesSectionView {
     set { dateLabel.text = dateText }
   }
 
+  // MARK: - MessagesSectionView
+
+  public override func fill(_ model: LocalisysChatSectionHeaderModel) {
+
+  }
+
   // MARK: - Layout
 
   public override func sizeThatFits(_ size: CGSize) -> CGSize {
