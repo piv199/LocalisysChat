@@ -73,13 +73,6 @@ class LocalisysChatMessagesView: UICollectionView {
     dataSource = self
     delegate = self
   }
-
-  override func reloadData() {
-//    guard messagesProvider != nil else {
-//      fatalError("\(String(describing: self)) must have \(#keyPath(messagesProvider)) properly set up before displaying messages!")
-//    }
-    super.reloadData()
-  }
 }
 
 extension LocalisysChatMessagesView: UICollectionViewDataSource {
@@ -128,16 +121,17 @@ extension LocalisysChatMessagesView: UICollectionViewDelegateFlowLayout {
     return CGSize(width: bounds.width, height: 44.0)
   }
 
-  public func collectionView(_ collectionView: UICollectionView,
+  public func collectionView(_ collection: UICollectionView,
                              layout collectionViewLayout: UICollectionViewLayout,
                              referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: bounds.width, height: 44.0)
+    let headerSectionViewModel = messagesProvider!.localisysChat(chatView, headerViewModelInSection: section)
+    let headerSectionView = DateLocalisysChatHeaderSectionView()
+    headerSectionViewModel.configure(headerSectionView)
+    return headerSectionView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
+    //  Crashes the program due to calling collectionView(_:headerViewAt:) which dequeues the cell by ourselves so its forbidden, before its actually needed for the core implementation of UICollectionView
+//    return collectionView(collection, headerViewAt: IndexPath(row: 0, section: section))
+//      .sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
   }
-
-}
-
-extension LocalisysChatMessagesView: UICollectionViewDelegate {
-
 }
 
 extension LocalisysChatMessagesView: UICollectionViewDataSourcePrefetching {

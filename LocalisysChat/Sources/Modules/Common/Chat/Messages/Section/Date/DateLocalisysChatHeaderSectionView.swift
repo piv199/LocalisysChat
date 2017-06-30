@@ -31,7 +31,7 @@ public final class DateLocalisysChatHeaderSectionView: LocalisysChatHeaderSectio
   @IBInspectable
   public var dateText: String {
     get { return dateLabel.text ?? "" }
-    set { dateLabel.text = dateText }
+    set { dateLabel.text = newValue }
   }
 
   // MARK: - Lifecycle
@@ -58,7 +58,8 @@ public final class DateLocalisysChatHeaderSectionView: LocalisysChatHeaderSectio
 
   public override func sizeThatFits(_ size: CGSize) -> CGSize {
     print("sizeThatFits(_ size: \(size) is called")
-    return size
+    dateLabel.sizeToFit()
+    return CGSize(width: size.width, height: dateLabel.bounds.height + 8.0)
   }
 
   override public func layoutSubviews() {
