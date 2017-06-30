@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ChatToolbarView: UIView {
+final class LocalisysChatToolbarView: UIView {
 
   // MARK: - UI
 

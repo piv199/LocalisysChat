@@ -9,9 +9,9 @@
 import UIKit
 
 @IBDesignable
-public final class DateMessagesSectionView: LocalisysChatHeaderSectionView {
+public final class DateLocalisysChatHeaderSectionView: LocalisysChatHeaderSectionView {
 
-  // MARK: - UI components
+  // MARK: - UI
 
   fileprivate lazy var substrateView: UIView = {
     let substrateView = UIView()
@@ -21,18 +21,37 @@ public final class DateMessagesSectionView: LocalisysChatHeaderSectionView {
 
   fileprivate lazy var dateLabel: UILabel = {
     let dateLabel = UILabel()
-    self.substrateView.addSubview(dateLabel)
     dateLabel.font = UIFont.systemFont(ofSize: 8.0)
     dateLabel.textColor = UIColor(white: 0.96, alpha: 1.0)
     return dateLabel
   }()
 
-  // MARK: - Properties
+  // MARK: - Public properties
 
   @IBInspectable
   public var dateText: String {
     get { return dateLabel.text ?? "" }
     set { dateLabel.text = dateText }
+  }
+
+  // MARK: - Lifecycle
+
+  public override init(frame: CGRect = .zero) {
+    super.init(frame: frame)
+    setupInitialState()
+  }
+
+  public required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setupInitialState()
+  }
+
+  // MARK: - Setup & Configuration
+
+  fileprivate func setupInitialState() {
+    backgroundColor = .red
+    [substrateView].forEach(addSubview)
+     substrateView.addSubview(dateLabel)
   }
 
   // MARK: - Layout

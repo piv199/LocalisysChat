@@ -1,5 +1,5 @@
 //
-//  ChatMessagesView.swift
+//  LocalisysChatMessagesView.swift
 //  LocalisysChat
 //
 //  Created by Olexii Pyvovarov on 6/28/17.
@@ -35,20 +35,24 @@ import UIKit
   func localisysChat(_ chat: LocalisysChatView, messageViewModelAt indexPath: IndexPath) -> LocalisysChatMessageViewModel
 }
 
-class ChatMessagesView: UICollectionView {
+class LocalisysChatMessagesView: UICollectionView {
 
   fileprivate var chatView: LocalisysChatView { return (superview as? LocalisysChatView)! }
 
   // MARK: - Core properties
 
   /// Messages data source required for displaying messages
-  @objc public weak var messagesProvider: LocalisysChatMessagesProvider! {
+  @objc public weak var messagesProvider: LocalisysChatMessagesProvider? {
     didSet { reloadData() }
   }
 
   // MARK: - Lifecycle
 
-  override init(frame: CGRect = .zero, collectionViewLayout layout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
+  convenience init() {
+    self.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+  }
+
+  override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
     super.init(frame: frame, collectionViewLayout: layout)
     setupInitialState()
   }
@@ -61,25 +65,31 @@ class ChatMessagesView: UICollectionView {
   // MARK: - Setup & Configurations
 
   fileprivate func setupInitialState() {
+    bounces = true
+    alwaysBounceVertical = true
+
     backgroundColor = .clear
+
+    dataSource = self
+    delegate = self
   }
 
   override func reloadData() {
-    guard messagesProvider != nil else {
-      fatalError("\(String(describing: self)) must have \(#keyPath(messagesProvider)) properly set up before displaying messages!")
-    }
+//    guard messagesProvider != nil else {
+//      fatalError("\(String(describing: self)) must have \(#keyPath(messagesProvider)) properly set up before displaying messages!")
+//    }
     super.reloadData()
   }
 }
 
-extension ChatMessagesView: UICollectionViewDataSource {
+extension LocalisysChatMessagesView: UICollectionViewDataSource {
 
   override var numberOfSections: Int {
-    return messagesProvider.localisysChatNumberOfMessagesSections(chatView)
+    return messagesProvider?.localisysChatNumberOfMessagesSections(chatView) ?? 0
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return messagesProvider.localisysChat(chatView, numberOfMessagesInSection: section)
+    return messagesProvider?.localisysChat(chatView, numberOfMessagesInSection: section) ?? 0
   }
 
   func collectionView(_ view: UICollectionView,
@@ -94,7 +104,7 @@ extension ChatMessagesView: UICollectionViewDataSource {
 
   fileprivate func collectionView(_ collectionView: UICollectionView,
                                   headerViewAt indexPath: IndexPath) -> UICollectionReusableView {
-    let headerSectionViewModel = messagesProvider.localisysChat(chatView, headerViewModelInSection: indexPath.section)
+    let headerSectionViewModel = messagesProvider!.localisysChat(chatView, headerViewModelInSection: indexPath.section)
     let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
                                                                      withReuseIdentifier: headerSectionViewModel.reuseIdentifier,
                                                                      for: indexPath)
@@ -103,7 +113,7 @@ extension ChatMessagesView: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let messageViewModel = messagesProvider.localisysChat(chatView, messageViewModelAt: indexPath)
+    let messageViewModel = messagesProvider!.localisysChat(chatView, messageViewModelAt: indexPath)
     let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: messageViewModel.reuseIdentifier, for: indexPath)
     (messageCell as? LocalisysChatMessageView).flatMap(messageViewModel.configure)
     return messageCell
@@ -111,11 +121,26 @@ extension ChatMessagesView: UICollectionViewDataSource {
 
 }
 
-extension ChatMessagesView: UICollectionViewDelegate {
+extension LocalisysChatMessagesView: UICollectionViewDelegateFlowLayout {
+  public func collectionView(_ collectionView: UICollectionView,
+                             layout collectionViewLayout: UICollectionViewLayout,
+                             sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: bounds.width, height: 44.0)
+  }
+
+  public func collectionView(_ collectionView: UICollectionView,
+                             layout collectionViewLayout: UICollectionViewLayout,
+                             referenceSizeForHeaderInSection section: Int) -> CGSize {
+    return CGSize(width: bounds.width, height: 44.0)
+  }
 
 }
 
-extension ChatMessagesView: UICollectionViewDataSourcePrefetching {
+extension LocalisysChatMessagesView: UICollectionViewDelegate {
+
+}
+
+extension LocalisysChatMessagesView: UICollectionViewDataSourcePrefetching {
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
 
   }

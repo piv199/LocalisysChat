@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D75844732A8B025280428F72 /* Pods_LocalisysChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACBCF373F775A26BE9AFECC /* Pods_LocalisysChat.framework */; };
+		FA12B9BD1F06D5BA00ECE744 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA7058071F06B07200250132 /* GoogleService-Info.plist */; };
 		FA1564471F03A21500DE87F6 /* ChatSendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1564461F03A21500DE87F6 /* ChatSendButton.swift */; };
 		FA1564491F03A37E00DE87F6 /* ChatTextInputArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1564481F03A37E00DE87F6 /* ChatTextInputArea.swift */; };
 		FA3152441F01C85F00996209 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3152431F01C85F00996209 /* Images.xcassets */; };
@@ -15,10 +16,13 @@
 		FA4D66EE1F06A75C005F1739 /* LocalisysChatHeaderSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D66ED1F06A75C005F1739 /* LocalisysChatHeaderSectionViewModel.swift */; };
 		FA5649351F06AAE600BCB7A6 /* LocalisysChatReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5649341F06AAE600BCB7A6 /* LocalisysChatReusable.swift */; };
 		FA63D3CB1F022FC4004B1B5C /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63D3CA1F022FC4004B1B5C /* AutoTextView.swift */; };
-		FA8ACCC61F01877F00AAF696 /* ChatToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ACCC51F01877F00AAF696 /* ChatToolbarView.swift */; };
+		FA70580B1F06B64100250132 /* DateLocalisysChatHeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA70580A1F06B64100250132 /* DateLocalisysChatHeaderSection.swift */; };
+		FA70580F1F06BA2C00250132 /* LocalisysChatBubbleMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA70580E1F06BA2C00250132 /* LocalisysChatBubbleMessageView.swift */; };
+		FA7058161F06BB6F00250132 /* LocalisysChatBubbleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7058151F06BB6F00250132 /* LocalisysChatBubbleMessage.swift */; };
+		FA8ACCC61F01877F00AAF696 /* LocalisysChatToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ACCC51F01877F00AAF696 /* LocalisysChatToolbarView.swift */; };
 		FA8ACCC81F01896700AAF696 /* LocalisysChatHeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ACCC71F01896700AAF696 /* LocalisysChatHeaderSectionView.swift */; };
 		FA8ACCCB1F018A0200AAF696 /* LocalisysChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ACCCA1F018A0200AAF696 /* LocalisysChatMessageView.swift */; };
-		FA8ACCCE1F018A3400AAF696 /* DateMessagesSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ACCCD1F018A3400AAF696 /* DateMessagesSectionView.swift */; };
+		FA8ACCCE1F018A3400AAF696 /* DateLocalisysChatHeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ACCCD1F018A3400AAF696 /* DateLocalisysChatHeaderSectionView.swift */; };
 		FAA88DA41F01744100B9C166 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA88DA31F01744100B9C166 /* Auth.storyboard */; };
 		FAA88DA71F01745F00B9C166 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA88DA61F01745F00B9C166 /* SignInViewController.swift */; };
 		FAA88DAA1F01782D00B9C166 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA88DA91F01782D00B9C166 /* LaunchController.swift */; };
@@ -32,7 +36,7 @@
 		FAE1CC291F016FAA0033FDEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE1CC281F016FAA0033FDEC /* Assets.xcassets */; };
 		FAE1CC2C1F016FAA0033FDEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE1CC2A1F016FAA0033FDEC /* LaunchScreen.storyboard */; };
 		FAFBAE121F04220500040864 /* LocalisysChatViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBAE111F04220500040864 /* LocalisysChatViewDelegate.swift */; };
-		FAFBAE1A1F04230300040864 /* ChatMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBAE191F04230300040864 /* ChatMessagesView.swift */; };
+		FAFBAE1A1F04230300040864 /* LocalisysChatMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBAE191F04230300040864 /* LocalisysChatMessagesView.swift */; };
 		FAFBAE1C1F04366C00040864 /* ChatArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBAE1B1F04366C00040864 /* ChatArrayExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,10 +52,13 @@
 		FA5649341F06AAE600BCB7A6 /* LocalisysChatReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatReusable.swift; sourceTree = "<group>"; };
 		FA63D3CA1F022FC4004B1B5C /* AutoTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTextView.swift; sourceTree = "<group>"; };
 		FA7058071F06B07200250132 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FA8ACCC51F01877F00AAF696 /* ChatToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatToolbarView.swift; sourceTree = "<group>"; };
+		FA70580A1F06B64100250132 /* DateLocalisysChatHeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLocalisysChatHeaderSection.swift; sourceTree = "<group>"; };
+		FA70580E1F06BA2C00250132 /* LocalisysChatBubbleMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatBubbleMessageView.swift; sourceTree = "<group>"; };
+		FA7058151F06BB6F00250132 /* LocalisysChatBubbleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatBubbleMessage.swift; sourceTree = "<group>"; };
+		FA8ACCC51F01877F00AAF696 /* LocalisysChatToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatToolbarView.swift; sourceTree = "<group>"; };
 		FA8ACCC71F01896700AAF696 /* LocalisysChatHeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatHeaderSectionView.swift; sourceTree = "<group>"; };
 		FA8ACCCA1F018A0200AAF696 /* LocalisysChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatMessageView.swift; sourceTree = "<group>"; };
-		FA8ACCCD1F018A3400AAF696 /* DateMessagesSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMessagesSectionView.swift; sourceTree = "<group>"; };
+		FA8ACCCD1F018A3400AAF696 /* DateLocalisysChatHeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLocalisysChatHeaderSectionView.swift; sourceTree = "<group>"; };
 		FAA88DA31F01744100B9C166 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		FAA88DA61F01745F00B9C166 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FAA88DA91F01782D00B9C166 /* LaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
@@ -67,7 +74,7 @@
 		FAE1CC2B1F016FAA0033FDEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAE1CC2D1F016FAA0033FDEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAFBAE111F04220500040864 /* LocalisysChatViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatViewDelegate.swift; sourceTree = "<group>"; };
-		FAFBAE191F04230300040864 /* ChatMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagesView.swift; sourceTree = "<group>"; };
+		FAFBAE191F04230300040864 /* LocalisysChatMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalisysChatMessagesView.swift; sourceTree = "<group>"; };
 		FAFBAE1B1F04366C00040864 /* ChatArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatArrayExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,13 +123,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		FA4D66E71F06A71A005F1739 /* MessagesSection */ = {
+		FA4D66E71F06A71A005F1739 /* Section */ = {
 			isa = PBXGroup;
 			children = (
 				FA8ACCC71F01896700AAF696 /* LocalisysChatHeaderSectionView.swift */,
 				FA4D66ED1F06A75C005F1739 /* LocalisysChatHeaderSectionViewModel.swift */,
 			);
-			path = MessagesSection;
+			path = Section;
 			sourceTree = "<group>";
 		};
 		FA4D66E81F06A72F005F1739 /* Message */ = {
@@ -134,12 +141,46 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		FA7058081F06B5D500250132 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				FA7058091F06B5E300250132 /* Date */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		FA7058091F06B5E300250132 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				FA8ACCCD1F018A3400AAF696 /* DateLocalisysChatHeaderSectionView.swift */,
+				FA70580A1F06B64100250132 /* DateLocalisysChatHeaderSection.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		FA70580C1F06B94B00250132 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				FA7058101F06BABD00250132 /* BubbleMessage */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		FA7058101F06BABD00250132 /* BubbleMessage */ = {
+			isa = PBXGroup;
+			children = (
+				FA70580E1F06BA2C00250132 /* LocalisysChatBubbleMessageView.swift */,
+				FA7058151F06BB6F00250132 /* LocalisysChatBubbleMessage.swift */,
+			);
+			path = BubbleMessage;
+			sourceTree = "<group>";
+		};
 		FA8ACCC91F01896D00AAF696 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				FA5649341F06AAE600BCB7A6 /* LocalisysChatReusable.swift */,
 				FA4D66E81F06A72F005F1739 /* Message */,
-				FA4D66E71F06A71A005F1739 /* MessagesSection */,
+				FA4D66E71F06A71A005F1739 /* Section */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -265,7 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				FA8ACCC91F01896D00AAF696 /* Common */,
-				FA8ACCCD1F018A3400AAF696 /* DateMessagesSectionView.swift */,
+				FA7058081F06B5D500250132 /* Section */,
+				FA70580C1F06B94B00250132 /* Message */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -347,8 +389,8 @@
 		FAFBAE181F0422C100040864 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FAFBAE191F04230300040864 /* ChatMessagesView.swift */,
-				FA8ACCC51F01877F00AAF696 /* ChatToolbarView.swift */,
+				FAFBAE191F04230300040864 /* LocalisysChatMessagesView.swift */,
+				FA8ACCC51F01877F00AAF696 /* LocalisysChatToolbarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -421,6 +463,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA12B9BD1F06D5BA00ECE744 /* GoogleService-Info.plist in Resources */,
 				FAA88DA41F01744100B9C166 /* Auth.storyboard in Resources */,
 				FAE1CC2C1F016FAA0033FDEC /* LaunchScreen.storyboard in Resources */,
 				FA3152441F01C85F00996209 /* Images.xcassets in Resources */,
@@ -485,26 +528,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA70580F1F06BA2C00250132 /* LocalisysChatBubbleMessageView.swift in Sources */,
 				FAFBAE121F04220500040864 /* LocalisysChatViewDelegate.swift in Sources */,
 				FAFBAE1C1F04366C00040864 /* ChatArrayExtensions.swift in Sources */,
 				FAA88DA71F01745F00B9C166 /* SignInViewController.swift in Sources */,
 				FAA88DAA1F01782D00B9C166 /* LaunchController.swift in Sources */,
 				FAA88DB91F01839000B9C166 /* LocalisysChatView.swift in Sources */,
-				FAFBAE1A1F04230300040864 /* ChatMessagesView.swift in Sources */,
+				FAFBAE1A1F04230300040864 /* LocalisysChatMessagesView.swift in Sources */,
 				FA8ACCCB1F018A0200AAF696 /* LocalisysChatMessageView.swift in Sources */,
 				FA1564491F03A37E00DE87F6 /* ChatTextInputArea.swift in Sources */,
+				FA70580B1F06B64100250132 /* DateLocalisysChatHeaderSection.swift in Sources */,
 				FAE1CC221F016FAA0033FDEC /* AppDelegate.swift in Sources */,
 				FA4D66EE1F06A75C005F1739 /* LocalisysChatHeaderSectionViewModel.swift in Sources */,
 				FA8ACCC81F01896700AAF696 /* LocalisysChatHeaderSectionView.swift in Sources */,
 				FA4D66EA1F06A746005F1739 /* LocalisysChatMessageViewModel.swift in Sources */,
+				FA7058161F06BB6F00250132 /* LocalisysChatBubbleMessage.swift in Sources */,
 				FA5649351F06AAE600BCB7A6 /* LocalisysChatReusable.swift in Sources */,
-				FA8ACCCE1F018A3400AAF696 /* DateMessagesSectionView.swift in Sources */,
+				FA8ACCCE1F018A3400AAF696 /* DateLocalisysChatHeaderSectionView.swift in Sources */,
 				FAC2CCFC1F02D3FC00C49D0E /* ChatActionButton.swift in Sources */,
 				FAA88DB11F017FD000B9C166 /* InitialApplicationSegue.swift in Sources */,
 				FA63D3CB1F022FC4004B1B5C /* AutoTextView.swift in Sources */,
 				FA1564471F03A21500DE87F6 /* ChatSendButton.swift in Sources */,
 				FAA88DB71F01833200B9C166 /* MainViewController.swift in Sources */,
-				FA8ACCC61F01877F00AAF696 /* ChatToolbarView.swift in Sources */,
+				FA8ACCC61F01877F00AAF696 /* LocalisysChatToolbarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,12 +680,15 @@
 			baseConfigurationReference = 27841BB9E5A7C9AF62079667 /* Pods-LocalisysChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6F3VTKR3Z8;
 				INFOPLIST_FILE = "$(SRCROOT)/LocalisysChat/Configuration/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "vk.piv-alex.LocalisysChat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -649,12 +698,15 @@
 			baseConfigurationReference = CDCAFB172B76B17D780D8C7E /* Pods-LocalisysChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6F3VTKR3Z8;
 				INFOPLIST_FILE = "$(SRCROOT)/LocalisysChat/Configuration/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "vk.piv-alex.LocalisysChat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

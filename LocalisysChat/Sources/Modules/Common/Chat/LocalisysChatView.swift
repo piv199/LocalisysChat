@@ -13,19 +13,14 @@ public class LocalisysChatView: UIView {
 
   // MARK: - UI
 
-  lazy var messagesCollectionView: ChatMessagesView = ChatMessagesView()
+  lazy var messagesCollectionView: LocalisysChatMessagesView = LocalisysChatMessagesView()
   lazy var delimiterView: UIView = {
     let delimiterView = UIView()
     delimiterView.frame = CGRect(origin: .zero, size: CGSize(width: self.bounds.width, height: 0.5))
     delimiterView.backgroundColor = UIColor(red: 154.0 / 255.0, green: 205.0 / 255.0, blue: 1.0, alpha: 1.0)
     return delimiterView
   }()
-  lazy var toolbarView: ChatToolbarView = {
-    let toolbarView = ChatToolbarView()
-    self.textArea.textViewDelegate = self
-    self.textArea.delegate = self
-    return toolbarView
-  }()
+  lazy var toolbarView: LocalisysChatToolbarView = LocalisysChatToolbarView()
   var textArea: AutoTextView { return toolbarView.textArea }
   var sendButton: ChatSendButton { return toolbarView.sendButton }
 
@@ -38,7 +33,7 @@ public class LocalisysChatView: UIView {
   // MARK: - Public properties
 
   public weak var delegate: LocalisysChatViewDelegate?
-  public weak var messagesProvider: LocalisysChatMessagesProvider? {
+  public var messagesProvider: LocalisysChatMessagesProvider? {
     get { return messagesCollectionView.messagesProvider }
     set { messagesCollectionView.messagesProvider = newValue }
   }
@@ -84,6 +79,8 @@ public class LocalisysChatView: UIView {
 
   fileprivate func setupInitialState() {
     [messagesCollectionView, toolbarView, delimiterView].forEach(addSubview)
+    textArea.textViewDelegate = self
+    textArea.delegate = self
     sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
   }
 

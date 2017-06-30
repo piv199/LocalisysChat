@@ -39,6 +39,7 @@
                     </view>
                     <connections>
                         <outlet property="IQLayoutGuideConstraint" destination="cnm-oj-Gva" id="6D3-UJ-kcE"/>
+                        <outlet property="chatView" destination="yqi-uW-Czy" id="cB9-MJ-evF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEJ-eg-dJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
