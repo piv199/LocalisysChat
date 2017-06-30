@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LocalisysChatViewDelegate: class {
+public protocol LocalisysChatViewDelegate: class {
   // Required
 
   func chatSendMessage(_ message: String)

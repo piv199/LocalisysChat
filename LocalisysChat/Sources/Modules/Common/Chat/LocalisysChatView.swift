@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-final class LocalisysChatView: UIView {
+public class LocalisysChatView: UIView {
 
   // MARK: - UI
 
@@ -75,7 +75,7 @@ final class LocalisysChatView: UIView {
     setupInitialState()
   }
 
-  required init?(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     setupInitialState()
   }
@@ -95,7 +95,7 @@ final class LocalisysChatView: UIView {
 
   // MARK: - Layout
 
-  override func layoutSubviews() {
+  override public func layoutSubviews() {
     super.layoutSubviews()
     let toolbarSize = toolbarView.sizeThatFits(bounds.size)
     var currentMaxY = bounds.height - toolbarSize.height
@@ -106,7 +106,7 @@ final class LocalisysChatView: UIView {
     toolbarView.layoutSubviews()
   }
 
-  override func draw(_ rect: CGRect) {
+  override public func draw(_ rect: CGRect) {
     super.draw(rect)
     guard let canvas = UIGraphicsGetCurrentContext() else { return }
     let roundRadius = isActive ? 0.0 : chatRoundedRadius
@@ -119,19 +119,19 @@ final class LocalisysChatView: UIView {
 }
 
 extension LocalisysChatView: AutoTextViewDelegate {
-  func textViewHeightChanged(textView: AutoTextView, newHeight: CGFloat) {
+  public func textViewHeightChanged(textView: AutoTextView, newHeight: CGFloat) {
     layoutSubviews()
   }
 
-  func textViewDidChange(_ textView: UITextView) {
+  public func textViewDidChange(_ textView: UITextView) {
     sendButton.isEnabled = delegate?.chatCanSendMessage(textView.text) ?? true
   }
 
-  func textViewDidBeginEditing(_ textView: UITextView) {
+  public func textViewDidBeginEditing(_ textView: UITextView) {
     isActive = true
   }
 
-  func textViewDidEndEditing(_ textView: UITextView) {
+  public func textViewDidEndEditing(_ textView: UITextView) {
     isActive = false
   }
 }

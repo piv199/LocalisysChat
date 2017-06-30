@@ -1,5 +1,5 @@
 //
-//  LocalisysChatMessagesSectionModel.swift
+//  LocalisysChatReusable.swift
 //  LocalisysChat
 //
 //  Created by Olexii Pyvovarov on 6/30/17.
@@ -8,4 +8,6 @@
 
 import Foundation
 
-@objc public protocol LocalisysChatSectionHeaderModel { }
+@objc public protocol LocalisysChatReusable {
+  var reuseIdentifier: String { get }
+}

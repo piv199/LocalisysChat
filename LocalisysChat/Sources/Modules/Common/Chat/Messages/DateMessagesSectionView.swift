@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-public final class DateMessagesSectionView: MessagesSectionView {
+public final class DateMessagesSectionView: LocalisysChatHeaderSectionView {
 
   // MARK: - UI components
 
@@ -33,12 +33,6 @@ public final class DateMessagesSectionView: MessagesSectionView {
   public var dateText: String {
     get { return dateLabel.text ?? "" }
     set { dateLabel.text = dateText }
-  }
-
-  // MARK: - MessagesSectionView
-
-  public override func fill(_ model: LocalisysChatSectionHeaderModel) {
-
   }
 
   // MARK: - Layout

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol LocalisysChatMessagesProvider: class {
+@objc public protocol LocalisysChatMessagesProvider: class {
 
   /// Total number of messages groups for localisys chat instance
   ///
@@ -24,20 +24,25 @@ import UIKit
   /// - Returns: number of messages
   func localisysChat(_ chat: LocalisysChatView, numberOfMessagesInSection section: Int) -> Int
 
-  func localisysChat(_ chat: LocalisysChatView, headerReuseIdentifierInSection section: Int) -> String
-  func localisysChat(_ chat: LocalisysChatView, messageReuseIdentifierAt indexPath: IndexPath) -> String
+  /// Model for displaying header for group of messages(section)
+  ///
+  /// - Parameters:
+  ///   - chat: localisys chat instance
+  ///   - section: section for model apply to
+  /// - Returns: model that describes data and view to display for group of messages
+  func localisysChat(_ chat: LocalisysChatView, headerViewModelInSection section: Int) -> LocalisysChatHeaderSectionViewModel
 
-  func localisysChat(_ chat: LocalisysChatView, headerModelInSection section: Int) -> LocalisysChatSectionHeaderModel
-  func localisysChat(_ chat: LocalisysChatView, messageModelAt indexPath: IndexPath) -> LocalisysChatMessageModel
+  func localisysChat(_ chat: LocalisysChatView, messageViewModelAt indexPath: IndexPath) -> LocalisysChatMessageViewModel
 }
 
-final class ChatMessagesView: UICollectionView {
+class ChatMessagesView: UICollectionView {
 
   fileprivate var chatView: LocalisysChatView { return (superview as? LocalisysChatView)! }
 
   // MARK: - Core properties
 
- @objc public weak var messagesProvider: LocalisysChatMessagesProvider? {
+  /// Messages data source required for displaying messages
+  @objc public weak var messagesProvider: LocalisysChatMessagesProvider! {
     didSet { reloadData() }
   }
 
@@ -70,11 +75,11 @@ final class ChatMessagesView: UICollectionView {
 extension ChatMessagesView: UICollectionViewDataSource {
 
   override var numberOfSections: Int {
-    return messagesProvider!.localisysChatNumberOfMessagesSections(chatView)
+    return messagesProvider.localisysChatNumberOfMessagesSections(chatView)
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return messagesProvider!.localisysChat(chatView, numberOfMessagesInSection: section)
+    return messagesProvider.localisysChat(chatView, numberOfMessagesInSection: section)
   }
 
   func collectionView(_ view: UICollectionView,
@@ -89,24 +94,18 @@ extension ChatMessagesView: UICollectionViewDataSource {
 
   fileprivate func collectionView(_ collectionView: UICollectionView,
                                   headerViewAt indexPath: IndexPath) -> UICollectionReusableView {
-    let headerReuseIdentifier = messagesProvider!.localisysChat(chatView, headerReuseIdentifierInSection: indexPath.section)
+    let headerSectionViewModel = messagesProvider.localisysChat(chatView, headerViewModelInSection: indexPath.section)
     let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
-                                                                     withReuseIdentifier: headerReuseIdentifier,
+                                                                     withReuseIdentifier: headerSectionViewModel.reuseIdentifier,
                                                                      for: indexPath)
-    if let messagesSectionView = headerView as? MessagesSectionView {
-      let sectionHeaderModel = messagesProvider!.localisysChat(chatView, headerModelInSection: indexPath.section)
-      messagesSectionView.fill(sectionHeaderModel)
-    }
+    (headerView as? LocalisysChatHeaderSectionView).flatMap(headerSectionViewModel.configure)
     return headerView
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let messageReuseIdentifier = messagesProvider!.localisysChat(chatView, messageReuseIdentifierAt: indexPath)
-    let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: messageReuseIdentifier, for: indexPath)
-    if let messageViewCell = messageCell as? MessageView {
-      let messageModel = messagesProvider!.localisysChat(chatView, messageModelAt: indexPath)
-      messageViewCell.fill(messageModel)
-    }
+    let messageViewModel = messagesProvider.localisysChat(chatView, messageViewModelAt: indexPath)
+    let messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: messageViewModel.reuseIdentifier, for: indexPath)
+    (messageCell as? LocalisysChatMessageView).flatMap(messageViewModel.configure)
     return messageCell
   }
 
