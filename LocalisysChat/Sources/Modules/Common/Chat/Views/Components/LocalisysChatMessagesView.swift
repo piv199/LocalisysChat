@@ -65,6 +65,7 @@ class LocalisysChatMessagesView: UICollectionView {
   // MARK: - Setup & Configurations
 
   fileprivate func setupInitialState() {
+
     bounces = true
     alwaysBounceVertical = true
 
@@ -118,7 +119,10 @@ extension LocalisysChatMessagesView: UICollectionViewDelegateFlowLayout {
   public func collectionView(_ collectionView: UICollectionView,
                              layout collectionViewLayout: UICollectionViewLayout,
                              sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: bounds.width, height: 44.0)
+    let messageViewModel = messagesProvider!.localisysChat(chatView, messageViewModelAt: indexPath)
+    let messageView = LocalisysChatTextBubbleMessageView()
+    messageViewModel.configure(messageView)
+    return messageView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
   }
 
   public func collectionView(_ collection: UICollectionView,
@@ -128,9 +132,18 @@ extension LocalisysChatMessagesView: UICollectionViewDelegateFlowLayout {
     let headerSectionView = DateLocalisysChatHeaderSectionView()
     headerSectionViewModel.configure(headerSectionView)
     return headerSectionView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
-    //  Crashes the program due to calling collectionView(_:headerViewAt:) which dequeues the cell by ourselves so its forbidden, before its actually needed for the core implementation of UICollectionView
-//    return collectionView(collection, headerViewAt: IndexPath(row: 0, section: section))
-//      .sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
+  }
+
+  public func collectionView(_ collectionView: UICollectionView,
+                             layout collectionViewLayout: UICollectionViewLayout,
+                             minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 4.0
+  }
+
+  public func collectionView(_ collectionView: UICollectionView,
+                             layout collectionViewLayout: UICollectionViewLayout,
+                             minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return 0.0
   }
 }
 

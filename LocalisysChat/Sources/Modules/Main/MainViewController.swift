@@ -24,7 +24,7 @@ final class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    chatView.messagesCollectionView.register(LocalisysChatBubbleMessageView.self,
+    chatView.messagesCollectionView.register(LocalisysChatTextBubbleMessageView.self,
                                              forCellWithReuseIdentifier: "LocalisysChatBubbleMessageView")
     chatView.messagesCollectionView.register(DateLocalisysChatHeaderSectionView.self,
                                              forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,

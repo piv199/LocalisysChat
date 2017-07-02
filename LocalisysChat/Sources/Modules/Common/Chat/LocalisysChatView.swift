@@ -116,6 +116,7 @@ public class LocalisysChatView: UIView {
 }
 
 extension LocalisysChatView: AutoTextViewDelegate {
+
   public func textViewHeightChanged(textView: AutoTextView, newHeight: CGFloat) {
     layoutSubviews()
   }

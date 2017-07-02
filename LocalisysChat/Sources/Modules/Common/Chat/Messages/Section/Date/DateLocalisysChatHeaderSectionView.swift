@@ -49,7 +49,7 @@ public final class DateLocalisysChatHeaderSectionView: LocalisysChatHeaderSectio
   // MARK: - Setup & Configuration
 
   fileprivate func setupInitialState() {
-    backgroundColor = .red
+//    backgroundColor = .red
     [substrateView].forEach(addSubview)
      substrateView.addSubview(dateLabel)
   }

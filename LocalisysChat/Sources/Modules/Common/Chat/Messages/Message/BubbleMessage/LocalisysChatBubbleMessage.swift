@@ -25,8 +25,7 @@ public class LocalisysChatTextBubbleMessage: LocalisysChatMessageViewModel {
   public var reuseIdentifier: String { return "LocalisysChatBubbleMessageView" }
 
   public func configure(_ messageView: LocalisysChatMessageView) {
-    guard let textBubbleMessage = messageView as? LocalisysChatBubbleMessageView else { return }
-    textBubbleMessage.fill(text)
+    guard let textBubbleMessage = messageView as? LocalisysChatTextBubbleMessageView else { return }
+    textBubbleMessage.fill(textMessage: text)
   }
-
 }
