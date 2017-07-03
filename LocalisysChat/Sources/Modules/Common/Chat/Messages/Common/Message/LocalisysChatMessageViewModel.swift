@@ -8,6 +8,11 @@
 
 import Foundation
 
-@objc public protocol LocalisysChatMessageViewModel: LocalisysChatReusable {
+public protocol LocalisysChatMessageViewModel: LocalisysChatReusable {
+  var messageClass: AnyClass { get }
   func configure(_ messageView: LocalisysChatMessageView)
+}
+
+extension LocalisysChatMessageViewModel {
+  public var reuseIdentifier: String { return String(describing: messageClass) }
 }

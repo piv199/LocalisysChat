@@ -22,11 +22,11 @@ public final class DateLocalisysChatHeaderSection: LocalisysChatHeaderSectionVie
 
   // MARK: - LocalisysChatHeaderSectionViewModel
 
-  public var reuseIdentifier: String { return "DateLocalisysChatHeaderSectionView" }
+  public var sectionClass: AnyClass { return DateLocalisysChatHeaderSectionView.self }
 
   public func configure(_ headerSectionView: LocalisysChatHeaderSectionView) {
     guard let dateHeaderSectionView = headerSectionView as? DateLocalisysChatHeaderSectionView else { return }
-    dateHeaderSectionView.dateText = dateTitle
+    dateHeaderSectionView.fill(title: dateTitle)
   }
 
 }

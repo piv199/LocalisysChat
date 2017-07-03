@@ -6,7 +6,7 @@
 //  Copyright © 2017 Olexii Pyvovarov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class LocalisysChatTextBubbleMessage: LocalisysChatMessageViewModel {
 
@@ -22,10 +22,11 @@ public class LocalisysChatTextBubbleMessage: LocalisysChatMessageViewModel {
 
   // MARK: - LocalisysChatMessageViewModel
 
-  public var reuseIdentifier: String { return "LocalisysChatBubbleMessageView" }
+  public var messageClass: AnyClass { return LocalisysChatTextBubbleMessageView.self }
 
   public func configure(_ messageView: LocalisysChatMessageView) {
     guard let textBubbleMessage = messageView as? LocalisysChatTextBubbleMessageView else { return }
+    textBubbleMessage.owner = Bool(NSNumber(value: arc4random() % 2)) ? .me : .stranger
     textBubbleMessage.fill(textMessage: text)
   }
 }

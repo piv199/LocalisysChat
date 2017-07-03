@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol LocalisysChatMessagesProvider: class {
+public protocol LocalisysChatMessagesProvider: class {
 
   /// Total number of messages groups for localisys chat instance
   ///
@@ -42,7 +42,7 @@ class LocalisysChatMessagesView: UICollectionView {
   // MARK: - Core properties
 
   /// Messages data source required for displaying messages
-  @objc public weak var messagesProvider: LocalisysChatMessagesProvider? {
+ public weak var messagesProvider: LocalisysChatMessagesProvider? {
     didSet { reloadData() }
   }
 
@@ -122,7 +122,8 @@ extension LocalisysChatMessagesView: UICollectionViewDelegateFlowLayout {
     let messageViewModel = messagesProvider!.localisysChat(chatView, messageViewModelAt: indexPath)
     let messageView = LocalisysChatTextBubbleMessageView()
     messageViewModel.configure(messageView)
-    return messageView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
+    let estimatedMessageViewSize = messageView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
+    return CGSize(width: bounds.width, height: estimatedMessageViewSize.height)
   }
 
   public func collectionView(_ collection: UICollectionView,
@@ -131,13 +132,14 @@ extension LocalisysChatMessagesView: UICollectionViewDelegateFlowLayout {
     let headerSectionViewModel = messagesProvider!.localisysChat(chatView, headerViewModelInSection: section)
     let headerSectionView = DateLocalisysChatHeaderSectionView()
     headerSectionViewModel.configure(headerSectionView)
-    return headerSectionView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
+    let estimatedHeaderSectionViewSize = headerSectionView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
+    return CGSize(width: bounds.width, height: estimatedHeaderSectionViewSize.height)
   }
 
   public func collectionView(_ collectionView: UICollectionView,
                              layout collectionViewLayout: UICollectionViewLayout,
                              minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 4.0
+    return 0.0
   }
 
   public func collectionView(_ collectionView: UICollectionView,

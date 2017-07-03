@@ -8,6 +8,6 @@
 
 import Foundation
 
-@objc public protocol LocalisysChatReusable {
+public protocol LocalisysChatReusable {
   var reuseIdentifier: String { get }
 }

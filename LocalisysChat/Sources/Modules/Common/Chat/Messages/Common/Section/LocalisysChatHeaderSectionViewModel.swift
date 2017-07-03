@@ -8,6 +8,11 @@
 
 import Foundation
 
-@objc public protocol LocalisysChatHeaderSectionViewModel: LocalisysChatReusable {
+public protocol LocalisysChatHeaderSectionViewModel: LocalisysChatReusable {
+  var sectionClass: AnyClass { get }
   func configure(_ headerSectionView: LocalisysChatHeaderSectionView)
+}
+
+extension LocalisysChatHeaderSectionViewModel {
+  public var reuseIdentifier: String { return String(describing: sectionClass) }
 }
