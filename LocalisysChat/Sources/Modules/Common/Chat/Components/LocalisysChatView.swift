@@ -8,6 +8,13 @@
 
 import UIKit
 
+extension UICollectionView {
+  func scrollToBottom(animated: Bool = true) {
+    let bottomRect = CGRect(x: 0, y: contentSize.height - 1, width: 1, height: 1)
+    scrollRectToVisible(bottomRect, animated: animated)
+  }
+}
+
 @IBDesignable
 public class LocalisysChatView: UIView {
 
@@ -127,6 +134,9 @@ extension LocalisysChatView: AutoTextViewDelegate {
 
   public func textViewDidBeginEditing(_ textView: UITextView) {
     isActive = true
+    DispatchQueue.main.async {
+      self.messagesCollectionView.scrollToBottom()
+    }
   }
 
   public func textViewDidEndEditing(_ textView: UITextView) {

@@ -38,10 +38,12 @@ open class LocalisysChatTextBubbleMessageMainView: LocalisysChatBubbleMessageMai
   lazy var textArea: UITextView = {
     let textView = UITextView()
     textView.backgroundColor = .clear
-    textView.isEditable = false
+//    textView.isEditable = false
     textView.font = UIFont.systemFont(ofSize: 12)
     textView.textColor = UIColor(white: 0.12, alpha: 1.0)
     textView.isUserInteractionEnabled = false
+//    textView.isSelectable = false
+//    textView.isScrollEnabled = false
     textView.textContainerInset = self.textInsets
     return textView
   }()

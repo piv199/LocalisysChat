@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RZCellSizeManager
 
 public protocol LocalisysChatMessagesProvider: class {
 
@@ -38,6 +39,8 @@ public protocol LocalisysChatMessagesProvider: class {
 class LocalisysChatMessagesView: UICollectionView {
 
   fileprivate var chatView: LocalisysChatView { return (superview as? LocalisysChatView)! }
+
+  fileprivate let sizeManager = RZCellSizeManager()
 
   // MARK: - Core properties
 
@@ -74,6 +77,9 @@ class LocalisysChatMessagesView: UICollectionView {
     dataSource = self
     delegate = self
   }
+
+  // MARK: - Methods
+
 }
 
 extension LocalisysChatMessagesView: UICollectionViewDataSource {
@@ -120,16 +126,21 @@ extension LocalisysChatMessagesView: UICollectionViewDelegateFlowLayout {
                              layout collectionViewLayout: UICollectionViewLayout,
                              sizeForItemAt indexPath: IndexPath) -> CGSize {
     let messageViewModel = messagesProvider!.localisysChat(chatView, messageViewModelAt: indexPath)
+    collectionView.register(messageViewModel.messageClass, forCellWithReuseIdentifier: messageViewModel.reuseIdentifier)
     let messageView = LocalisysChatTextBubbleMessageView()
     messageViewModel.configure(messageView)
     let estimatedMessageViewSize = messageView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
     return CGSize(width: bounds.width, height: estimatedMessageViewSize.height)
   }
 
-  public func collectionView(_ collection: UICollectionView,
+  public func collectionView(_ collectionView: UICollectionView,
                              layout collectionViewLayout: UICollectionViewLayout,
                              referenceSizeForHeaderInSection section: Int) -> CGSize {
     let headerSectionViewModel = messagesProvider!.localisysChat(chatView, headerViewModelInSection: section)
+    collectionView.register(headerSectionViewModel.sectionClass,
+                            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                            withReuseIdentifier: headerSectionViewModel.reuseIdentifier)
+
     let headerSectionView = DateLocalisysChatHeaderSectionView()
     headerSectionViewModel.configure(headerSectionView)
     let estimatedHeaderSectionViewSize = headerSectionView.sizeThatFits(.init(width: bounds.width, height: .greatestFiniteMagnitude))
