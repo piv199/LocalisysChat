@@ -40,7 +40,7 @@ class LocalisysChatMessagesView: UICollectionView {
 
   fileprivate var chatView: LocalisysChatView { return (superview as? LocalisysChatView)! }
 
-  fileprivate let sizeManager = RZCellSizeManager()
+  let cellSizeCacheManager = RZCellSizeManager()
 
   // MARK: - Core properties
 

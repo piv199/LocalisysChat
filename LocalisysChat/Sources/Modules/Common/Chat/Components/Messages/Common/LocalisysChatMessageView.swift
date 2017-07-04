@@ -8,4 +8,8 @@
 
 import UIKit
 
-public class LocalisysChatMessageView: UICollectionViewCell { }
+public class LocalisysChatMessageView: UICollectionViewCell {
+
+  internal lazy var statusView: LocalisysChatMessageStatusView = LocalisysChatMessageStatusView()
+
+}

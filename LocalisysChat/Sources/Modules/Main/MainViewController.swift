@@ -12,11 +12,12 @@ import FirebaseDatabase
 final class MainViewController: UIViewController {
 
   let messages = [
-    "Message 1",
-    "Я все еще лучший здесь, в Италии, - заявил Кассано всего неделю назад в интервью Sky Italia",
-    "Между тем, ведь речь идет о двукратном чемпионе Германии и о человеке, входившем в состав сборной-чемпиона мира!",
-    "Один из наиболее недооцененных игроков своего поколения, Мотта не только был одним из участников великого",
-    "Гринвальди"
+    "This is the chapter where we really get to see the code. We have two examples:\nRequest/Reply\nPublish/Subscribe",
+    "This example explores how to implement the Observer pattern using a Publish-Subscribe Channel. It considers distribution.",
+    "Hello!",
+    "Hi! Are these going to be interesting?",
+    "Please, be patient",
+    "POJO Messaging Example. Introduction. This example shows that you don't need to learn Camel's super cool DSLs if you don't want to. Camel has a set of ..."
   ]
 
   @IBOutlet weak var chatView: LocalisysChatView!
@@ -53,8 +54,17 @@ extension MainViewController: LocalisysChatMessagesProvider {
   }
 
   func localisysChat(_ chat: LocalisysChatView, messageViewModelAt indexPath: IndexPath) -> LocalisysChatMessageViewModel {
-    return LocalisysChatTextBubbleMessage(message: messages[indexPath.row])
+    let messageModel = LocalisysChatTextBubbleMessageModel(text: messages[indexPath.row],
+                                                           timestamp: Date().addingTimeInterval(TimeInterval(arc4random() % 2000)),
+                                                           status: .none)
+    return LocalisysChatTextBubbleMessage(messageModel)
   }
-
-
 }
+
+
+
+
+
+
+
+

@@ -8,25 +8,6 @@
 
 import UIKit
 
-extension UITextView {
-  func hasMultilineText(with size: CGSize) -> Bool {
-    let estimatedTextHeight: CGFloat
-    if (!text.isEmpty) {
-      estimatedTextHeight = (text as NSString)
-        .boundingRect(with: size, options: .usesLineFragmentOrigin,
-                      attributes: [NSFontAttributeName: font!], context: nil)
-        .height
-    } else {
-      estimatedTextHeight = attributedText
-        .boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
-        .height
-    }
-    let numberOfLines = estimatedTextHeight / font!.lineHeight
-    return numberOfLines > 1.0
-  }
-
-}
-
 open class LocalisysChatTextBubbleMessageMainView: LocalisysChatBubbleMessageMainView {
 
   public dynamic var textInsets = UIEdgeInsets(top: 3.0, left: 12.0, bottom: 3.0, right: 12.0) {
@@ -38,15 +19,17 @@ open class LocalisysChatTextBubbleMessageMainView: LocalisysChatBubbleMessageMai
   lazy var textArea: UITextView = {
     let textView = UITextView()
     textView.backgroundColor = .clear
-//    textView.isEditable = false
     textView.font = UIFont.systemFont(ofSize: 12)
     textView.textColor = UIColor(white: 0.12, alpha: 1.0)
     textView.isUserInteractionEnabled = false
-//    textView.isSelectable = false
-//    textView.isScrollEnabled = false
     textView.textContainerInset = self.textInsets
     return textView
   }()
+
+  internal var statusView: LocalisysChatMessageStatusView! {
+    willSet { statusView?.removeFromSuperview() }
+    didSet { addSubview(statusView) }
+  }
 
   // MARK: - Lifecycle
 
@@ -64,6 +47,7 @@ open class LocalisysChatTextBubbleMessageMainView: LocalisysChatBubbleMessageMai
 
   fileprivate func setupInitialState() {
     addSubview(textArea)
+//    backgroundColor = .yellow
   }
 
   // MARK: - Methods
@@ -80,13 +64,38 @@ open class LocalisysChatTextBubbleMessageMainView: LocalisysChatBubbleMessageMai
 
   open override func sizeThatFits(_ size: CGSize) -> CGSize {
     let estimatedTextAreaSize = textArea.sizeThatFits(size)
-    return CGSize(width: textArea.hasMultilineText(with: estimatedTextAreaSize) ? size.width : estimatedTextAreaSize.width,
-                  height: estimatedTextAreaSize.height)
+    let estimatedStatusViewSize = statusView.sizeThatFits(size)
+
+    let textAreaLines = textArea.lines(allowedWidth: size.width)
+    let multilineTextArea = textArea.hasMultilineText(with: estimatedTextAreaSize)
+
+    if let lastTextAreaLine = textAreaLines.last {
+      let estimatedLastTextAreaLineSize = (lastTextAreaLine as NSString)
+        .boundingRect(with: size, options: [], attributes: [NSFontAttributeName: textArea.font!], context: nil)
+
+      let spaceLeft = size.width - estimatedLastTextAreaLineSize.width - textArea.textContainerInset.horizontal - 4.0
+      if spaceLeft <= estimatedStatusViewSize.width {
+        return CGSize(width: multilineTextArea ? size.width : max(estimatedTextAreaSize.width, estimatedStatusViewSize.width),
+                      height: estimatedTextAreaSize.height + estimatedStatusViewSize.height)
+      } else {
+        return CGSize(width: multilineTextArea ? size.width : estimatedTextAreaSize.width + estimatedStatusViewSize.width,
+                      height: estimatedTextAreaSize.height)
+      }
+    }
+    return CGSize(width: multilineTextArea ? size.width : estimatedTextAreaSize.width,
+                  height: estimatedTextAreaSize.height + estimatedStatusViewSize.height)
   }
 
   open override func layoutSubviews() {
     super.layoutSubviews()
+
     textArea.frame = bounds
+    
+    let estimatedStatusViewSize = statusView.sizeThatFits(bounds.size)
+    statusView.frame = CGRect(x: bounds.width - estimatedStatusViewSize.width - textArea.textContainerInset.right,
+                              y: bounds.height - estimatedStatusViewSize.height - 1.0,
+                              width: estimatedStatusViewSize.width, height: estimatedStatusViewSize.height)
+
   }
 
 }

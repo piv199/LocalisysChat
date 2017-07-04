@@ -41,11 +41,8 @@ public class LocalisysChatBubbleMessageView: LocalisysChatMessageView {
   // MARK: - UI
 
   var mainView: LocalisysChatBubbleMessageMainView = LocalisysChatBubbleMessageMainView() {
-    didSet {
-      oldValue.removeFromSuperview()
-      self.addSubview(mainView)
-      layoutSubviews()
-    }
+    willSet { mainView.removeFromSuperview() }
+    didSet { addSubview(mainView) }
   }
 
   // MARK: - Lifecycle
@@ -90,6 +87,9 @@ public class LocalisysChatBubbleMessageView: LocalisysChatMessageView {
   public override func layoutSubviews() {
     super.layoutSubviews()
     let estimatedMainViewSize = mainView.sizeThatFits(.init(width: bounds.width * bubbleMaxWidthPercent, height: bounds.height))
+
+    print("estimatedMainViewSize \(estimatedMainViewSize)")
+    print("bounds \(bounds)")
 
     let rect: CGRect
     switch owner.alignment {

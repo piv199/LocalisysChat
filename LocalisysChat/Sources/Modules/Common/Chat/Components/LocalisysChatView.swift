@@ -45,8 +45,6 @@ public class LocalisysChatView: UIView {
     set { messagesCollectionView.messagesProvider = newValue }
   }
 
-//  public weak var dataSourcce:
-
   @IBInspectable var chatColor: UIColor = UIColor(red: 194.0 / 255.0, green: 224.0 / 255.0, blue: 1.0, alpha: 1.0) {
     didSet { setNeedsDisplay() }
   }
@@ -107,6 +105,7 @@ public class LocalisysChatView: UIView {
     currentMaxY -= delimiterHeight
     delimiterView.frame = CGRect(x: 0, y: currentMaxY, width: bounds.width, height: delimiterHeight)
     messagesCollectionView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: currentMaxY)
+    messagesCollectionView.collectionViewLayout.invalidateLayout()
     toolbarView.layoutSubviews()
   }
 

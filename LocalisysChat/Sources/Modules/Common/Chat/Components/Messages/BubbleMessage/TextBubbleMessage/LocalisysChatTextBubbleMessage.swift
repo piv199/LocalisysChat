@@ -8,16 +8,22 @@
 
 import UIKit
 
+public struct LocalisysChatTextBubbleMessageModel: LocalisysChatTextBubbleMessageConvertible {
+  public let text: String
+  public let timestamp: Date
+  public let status: LocalisysChatMessageStatus
+}
+
 public class LocalisysChatTextBubbleMessage: LocalisysChatMessageViewModel {
 
   // MARK: - Public properties
 
-  public let text: String //complicated structure
+  public let messageModel: LocalisysChatTextBubbleMessageConvertible
 
   // MARK: - Lifecycle
 
-  init(message: String) {
-    text = message
+  init(_ model: LocalisysChatTextBubbleMessageConvertible) {
+    self.messageModel = model
   }
 
   // MARK: - LocalisysChatMessageViewModel
@@ -27,6 +33,6 @@ public class LocalisysChatTextBubbleMessage: LocalisysChatMessageViewModel {
   public func configure(_ messageView: LocalisysChatMessageView) {
     guard let textBubbleMessage = messageView as? LocalisysChatTextBubbleMessageView else { return }
     textBubbleMessage.owner = Bool(NSNumber(value: arc4random() % 2)) ? .me : .stranger
-    textBubbleMessage.fill(textMessage: text)
+    textBubbleMessage.fill(messageModel)
   }
 }
